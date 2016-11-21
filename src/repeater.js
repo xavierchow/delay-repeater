@@ -23,4 +23,4 @@ function repeat(fn, times, interval, onComplete) {
   }());
 }
 
-export { repeat }
+export { repeat as default }

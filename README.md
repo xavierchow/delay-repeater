@@ -7,6 +7,8 @@ npm install delay-repeater
 
 # Usage
 ```js
+import repeat from 'delay-repeater';
+
 const fn = () => {
   console.log('ipsum');
 }
