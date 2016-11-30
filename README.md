@@ -7,7 +7,10 @@ npm install delay-repeater
 
 # Usage
 ```js
+//es6 module
 import repeat from 'delay-repeater';
+//or CommonJS require style
+const repeat = require('delay-repeater').default;
 
 const fn = () => {
   console.log('ipsum');
@@ -16,7 +19,7 @@ const times = 3;
 const interval = 3000; // 3 seconds
 repeat(fn, times, interval);
 
-//or
+//or with a completed callback
 const done = () => {
   console.log('3 times execution finished');
 }
