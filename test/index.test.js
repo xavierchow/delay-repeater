@@ -1,6 +1,6 @@
 'use strict';
 
-import { repeat } from '../index';
+import repeat from '../index';
 import * as sinon from 'sinon';
 import { expect } from 'chai';
 
@@ -37,6 +37,30 @@ describe('Delay-repeater', () => {
       expect(spy.callCount).to.be.equal(3);
       const elapse = Date.now() - start;
       expect(elapse).to.be.within(900 + 300, 1000 + 300);
+      done();
+    });
+  });
+  it('should call done when fn is a promise', (done) => {
+    const fn = function () {
+      return new Promise((resolve, reject) => {
+        setTimeout(function() {
+          reject(new Error('oops'));
+        }, 100);
+      });
+    } 
+    repeat(fn, 1, 300, (e) => {
+      expect(e).to.be.exist;
+      expect(e.remaining).to.be.equal(1);
+      done();
+    });
+  });
+  it('should call done when fn throws', (done) => {
+    const fn = function () {
+      throw new Error('oops');
+    } 
+    repeat(fn, 1, 300, (e) => {
+      expect(e).to.be.exist;
+      expect(e.remaining).to.be.equal(1);
       done();
     });
   });

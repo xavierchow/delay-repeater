@@ -19,8 +19,11 @@ const times = 3;
 const interval = 3000; // 3 seconds
 repeat(fn, times, interval);
 
-//or with a completed callback
-const done = () => {
+//or with an error first callback
+const done = (e) => {
+  if (e) {
+    return console.log(e);
+  }
   console.log('3 times execution finished');
 }
 repeat(fn, times, interval, done);
