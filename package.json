@@ -1,6 +1,6 @@
 {
   "name": "delay-repeater",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Run a function repeatly with a delay",
   "main": "index.js",
   "scripts": {
